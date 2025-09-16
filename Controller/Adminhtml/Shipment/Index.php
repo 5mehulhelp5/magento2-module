@@ -113,7 +113,8 @@ class Index extends \Magento\Backend\App\Action
             $totalOrdersVirtual = 0;
             foreach ($order->getAllItems() as $orderItem) {
                 $totalOrders++;
-                if ($orderItem->getProduct()->getIsVirtual()) {
+                $product = $orderItem->getProduct();
+                if ($product && $product->getIsVirtual()) {
                     $totalOrdersVirtual++;
                 }
             }
